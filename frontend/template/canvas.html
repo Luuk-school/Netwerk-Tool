@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block page_styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='canvas.css') }}">
+{% endblock %}
+
+{% block page_scripts %}
+<script type="module" src="{{ url_for('static', filename='canvas.js') }}"></script>
+{% endblock %}
+
+{% block content %}
+<section class="section-header">
+    <p class="eyebrow">Canvas</p>
+    <h2>Netwerkvisualisatie</h2>
+    <p>Een compacte visual voor een netwerkstructuur in de stijl van een diepe zeekaart.</p>
+</section>
+
+<section class="canvas-shell card">
+    <div class="canvas-stage" id="canvas-stage" aria-label="Interactieve netwerkcanvas"></div>
+
+    <aside class="canvas-legend">
+        <h3>Legenda</h3>
+        <ul>
+            <li><span></span> Kernservices</li>
+            <li><span></span> Verbindingslaag</li>
+            <li><span></span> Clientgroep</li>
+        </ul>
+        <a class="button secondary" href="{{ url_for('settings') }}">Pas instellingen aan</a>
+    </aside>
+</section>
+{% endblock %}

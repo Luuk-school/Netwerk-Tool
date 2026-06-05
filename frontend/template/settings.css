@@ -1,0 +1,135 @@
+.settings-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: 18px;
+}
+
+.settings-form,
+.settings-preview {
+  padding: 22px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.settings-form {
+  display: grid;
+  gap: 16px;
+}
+
+.settings-form label {
+  display: grid;
+  gap: 8px;
+}
+
+.settings-form label span {
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.protocol-field {
+  display: grid;
+  gap: 8px;
+}
+
+.protocol-field > span {
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.protocol-toggle {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.protocol-option {
+  display: block;
+}
+
+.protocol-option input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.protocol-option span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  background: rgba(2, 14, 22, 0.76);
+  color: var(--muted);
+  transition: border-color 0.18s ease, background 0.18s ease, color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.protocol-option input:checked + span {
+  color: var(--text);
+  border-color: rgba(139, 228, 239, 0.38);
+  background: rgba(7, 30, 44, 0.96);
+  box-shadow: 0 0 0 4px rgba(87, 215, 229, 0.12);
+}
+
+.settings-form input {
+  width: 100%;
+  min-height: 48px;
+  padding: 0 14px;
+  color: var(--text);
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  background: rgba(2, 14, 22, 0.76);
+}
+
+.settings-form input:focus {
+  outline: none;
+  border-color: rgba(139, 228, 239, 0.38);
+  box-shadow: 0 0 0 4px rgba(87, 215, 229, 0.12);
+}
+
+.settings-preview {
+  display: grid;
+  gap: 14px;
+  align-self: start;
+}
+
+.settings-preview strong,
+.preview-row strong {
+  font-family: "Space Grotesk", sans-serif;
+}
+
+.preview-row {
+  display: grid;
+  gap: 6px;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.preview-row:last-child {
+  border-bottom: 0;
+}
+
+.save-state {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+@media (max-width: 1100px) {
+  .settings-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 760px) {
+  .settings-form,
+  .settings-preview {
+    padding: 18px;
+  }
+
+  .protocol-toggle {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+
+{% block page_styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='settings.css') }}">
+{% endblock %}
+
+{% block page_scripts %}
+<script type="module" src="{{ url_for('static', filename='settings.js') }}"></script>
+{% endblock %}
+
+{% block content %}
+<section class="section-header">
+    <p class="eyebrow">Settings</p>
+    <h2>Configuratie</h2>
+    <p>Werk je configuratie bij en sla die direct op in <code>config.json</code>.</p>
+</section>
+
+<section class="settings-grid">
+    <form class="card settings-form" id="settings-form" data-secret-stored="{{ 1 if config.secretStored else 0 }}">
+        <label>
+            <span>Hypervisor</span>
+            <input name="hypervisor" id="hypervisor" value="{{ config.hypervisor }}" placeholder="bijv. Proxmox of Cloudstack">
+        </label>
+
+        <label>
+            <span>Host IP</span>
+            <input name="hostIp" id="hostIp" value="{{ config.hostIp }}" placeholder="192.168.1.1">
+        </label>
+
+        <label>
+            <span>Port</span>
+            <input name="port" id="port" value="{{ config.port }}" placeholder="8006">
+        </label>
+
+        <div class="protocol-field">
+            <span>Protocol</span>
+            <div class="protocol-toggle" role="radiogroup" aria-label="Protocol keuze">
+                <label class="protocol-option">
+                    <input type="radio" name="useHttps" value="false" {% if not config.useHttps %}checked{% endif %}>
+                    <span>http://</span>
+                </label>
+                <label class="protocol-option">
+                    <input type="radio" name="useHttps" value="true" {% if config.useHttps %}checked{% endif %}>
+                    <span>https://</span>
+                </label>
+            </div>
+        </div>
+
+        <label>
+            <span>API Key</span>
+            <input name="apiKey" id="apiKey" value="{{ config.apiKey }}" placeholder="API key">
+        </label>
+
+        <label>
+            <span>{% if config.secretStored %}Secret versleuteld opgeslagen{% else %}Secret{% endif %}</span>
+            <input name="secret" id="secret" type="password" value="" placeholder="CloudStack secret" autocomplete="new-password">
+            <p class="field-note">Laat leeg om de bestaande secret te behouden. Nieuwe tekst wordt versleuteld opgeslagen.</p>
+        </label>
+
+        <div class="actions">
+            <button class="button primary" type="button" data-save-config>Opslaan</button>
+            <button class="button secondary" type="button" data-reset-config>Leegmaken</button>
+        </div>
+        <p class="save-state" data-save-state>Wijzigingen worden opgeslagen in config.json.</p>
+    </form>
+
+    <aside class="card settings-preview">
+        <h3>Preview</h3>
+        <div class="preview-row">
+            <span>Endpoint</span>
+            <strong data-preview-endpoint>—</strong>
+        </div>
+        <div class="preview-row">
+            <span>Hypervisor</span>
+            <strong data-preview-hypervisor>—</strong>
+        </div>
+        <div class="preview-row">
+            <span>Protocol</span>
+            <strong data-preview-protocol>HTTP</strong>
+        </div>
+        <div class="preview-row">
+            <span>Secret status</span>
+            <strong data-preview-status>Armed</strong>
+        </div>
+    </aside>
+</section>
+{% endblock %}

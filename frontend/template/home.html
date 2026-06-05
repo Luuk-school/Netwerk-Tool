@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block page_styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+{% endblock %}
+
+{% block content %}
+<section class="hero card">
+    <div class="hero-copy">
+        <p class="eyebrow">Home</p>
+        <h2>Een rustige cockpit voor je netwerk.</h2>
+        <p>
+            Deze startpagina geeft een snel overzicht van de tool, met een donkere zee-stijl en directe toegang tot de canvas en instellingen.
+        </p>
+        <div class="actions">
+            <a class="button primary" href="{{ url_for('canvas') }}">Naar canvas</a>
+            <a class="button secondary" href="{{ url_for('settings') }}">Open settings</a>
+        </div>
+    </div>
+
+    <div class="hero-panel">
+        <p class="panel-title">Snelle status</p>
+        <div class="metric-grid">
+            <article>
+                <strong>3</strong>
+                <span>Pagina's</span>
+            </article>
+            <article>
+                <strong>1</strong>
+                <span>Flask app</span>
+            </article>
+            <article>
+                <strong>Sea</strong>
+                <span>Dark palette</span>
+            </article>
+            <article>
+                <strong>Live</strong>
+                <span>Server-rendered</span>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="card info-grid">
+    <article>
+        <h3>Home</h3>
+        <p>Een overzichtspagina met een korte samenvatting en navigatie naar de andere onderdelen.</p>
+    </article>
+    <article>
+        <h3>Canvas</h3>
+        <p>Een visuele netwerkkaart met diepe blauwtinten en turquoise accenten.</p>
+    </article>
+    <article>
+        <h3>Settings</h3>
+        <p>Een configuratiepagina om host, poort en token netjes bij te houden.</p>
+    </article>
+</section>
+{% endblock %}

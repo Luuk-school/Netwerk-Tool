@@ -1,0 +1,8 @@
+{
+    "hypervisor": "Cloudstack",
+    "hostIp": "192.168.1.1",
+    "port": "80",
+    "useHttps": false,
+    "apiKey": "500",
+    "secret": "gAAAAABqIFlNMzzMIWyu9DF1qa-C1iuvzGA98I3bhOmhIloeQvRTVfAoodhvOsmdiCthLnALkiHMvcc0lu3th75B9_gNv57nZQ=="
+}
